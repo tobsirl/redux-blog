@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchPosts } from '../actions';
+import { fetchPosts, fetchPostsAndUsers } from '../actions';
 import UserHeader from './UserHeader';
 
 class PostList extends Component {
   componentDidMount() {
-    this.props.fetchPosts();
+    this.props.fetchPostsAndUsers();
   }
 
   renderList() {
@@ -19,7 +19,7 @@ class PostList extends Component {
               <h2>{title}</h2>
               <p>{body}</p>
             </div>
-          <UserHeader userId={userId}/>
+            <UserHeader userId={userId} />
           </div>
         </div>
       );
@@ -37,5 +37,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchPosts }
+  { fetchPosts, fetchPostsAndUsers }
 )(PostList);
